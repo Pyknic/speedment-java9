@@ -1,0 +1,538 @@
+/**
+ *
+ * Copyright (c) 2006-2017, Speedment, Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); You may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+/*** Load Custom Fonts ***/
+@font-face { src: url("../fonts/AdventPro-Bold.ttf"); }
+
+@font-face { src: url("../fonts/fontawesome-webfont.ttf"); }
+
+@font-face { src: url("../fonts/Montserrat-Bold.otf"); }
+@font-face { src: url("../fonts/Montserrat-Regular.otf"); }
+
+@font-face { src: url("../fonts/NotoSans-Bold.ttf"); }
+@font-face { src: url("../fonts/NotoSans-Regular.ttf"); }
+@font-face { src: url("../fonts/NotoSans-Italic.ttf"); }
+@font-face { src: url("../fonts/NotoSans-BoldItalic.ttf"); }
+
+@font-face { src: url("../fonts/SourceSansPro-Bold.ttf"); }
+@font-face { src: url("../fonts/SourceSansPro-Regular.ttf"); }
+
+/*** Constants ***/
+* {
+    -fx-speedment-gray:        #DBDAD9;
+    -fx-speedment-lightgray:   #EDEDED;
+    -fx-speedment-darkgray:    #A1A1A0;
+    
+    -fx-speedment-blue:        #0E8AC5;
+    -fx-speedment-green:       #87BD40;
+    -fx-speedment-orange:      #be9f41;
+    -fx-speedment-red:         #be4141;
+    
+    -fx-speedment-lightgray:   #f5f5f5;
+    -fx-speedment-lightblue:   #45a6fc;
+    -fx-speedment-lightgreen:  #c3dea0;
+    -fx-speedment-lightred:    #dea1a1;
+    -fx-speedment-lightorange: #decfa1;
+
+    -fx-focus-color: -fx-speedment-blue;
+    -fx-accent:      -fx-speedment-blue;
+    
+    -fx-font-header: 'Montserrat';
+    -fx-font-text:   'Noto Sans';
+}
+
+/*** Titles Pane ***/
+.titled-pane {
+    -fx-background-color: -fx-speedment-gray;
+    -fx-text-fill: white;
+}
+
+.titled-pane > .title {
+    -fx-background-color: -fx-speedment-blue;
+    -fx-background-radius: 0px;
+    -fx-font-size: 1.1em;
+    -fx-font-weight: bold;
+    -fx-font-family: -fx-font-header;
+}
+
+/*** Border Panes ***/
+.border-pane {
+    -fx-border-width: 0px;
+}
+
+/*** Tree View ***/
+.tree-view {
+    -fx-font-family: -fx-font-text;
+    -fx-font-size: 1.1em;
+    -fx-font-weight: normal;
+}
+
+.tree-view .tree-cell:selected {
+    -fx-background-color: -fx-speedment-blue;
+    -fx-background-radius: 0px;
+    -fx-border-width: 0px;
+    -fx-text-fill: white;
+}
+
+.tree-view .tree-cell .arrow  {
+    -fx-background-color: black;
+}
+
+.tree-view .tree-cell:selected .arrow {
+    -fx-background-color: white;
+}
+
+.tree-view .gui-disabled,
+.tree-view .gui-disabled .tree-cell {
+    -fx-text-fill: -fx-speedment-lightgray;
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+}
+
+/*** Label ***/
+.label {
+    -fx-font-family: -fx-font-text;
+    -fx-font-size: 1.1em;
+    -fx-font-weight: normal;
+}
+
+/*** Headers ***/
+.header {
+    -fx-font-family: -fx-font-header;
+    -fx-font-size: 2em;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-speedment-darkgray;
+}
+
+/*** Text Fields and Areas ***/
+.text-field,
+.text-area {
+    -fx-background-color: white;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-border-color: -fx-speedment-darkgray;
+    -fx-font-family: -fx-font-text;
+    -fx-font-size: 1.1em;
+    -fx-font-weight: normal;
+}
+
+.text-field:focused, 
+.text-field:hover,
+.text-area:focused, 
+.text-area:hover {
+    -fx-border-color: -fx-speedment-green;
+}
+
+/*** List Views ***/
+.list-view {
+    -fx-background-color: white;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-border-color: -fx-speedment-darkgray;
+    -fx-font-family: -fx-font-text;
+    -fx-font-size: 1.1em;
+    -fx-font-weight: normal;
+}
+
+.list-view:focused, 
+.list-view:hover,
+.list-view:focused, 
+.list-view:hover {
+    -fx-border-color: -fx-speedment-green;
+}
+
+/*** Buttons ***/
+.button {
+    -fx-background-color: -fx-speedment-green;
+    -fx-background-radius: 0px;
+    -fx-border-width: 0px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-family: -fx-font-header;
+    -fx-font-size: 1.0em;
+    -fx-cursor: hand;
+    -fx-graphic-text-gap: 0.7em;
+}
+
+.button:hover {
+    -fx-background-color: -fx-speedment-darkgray;
+}
+
+.button .glyph-icon {
+    -fx-fill: white;
+    -fx-text-fill: white;
+    -fx-font-size: 1.5em;
+}
+
+/*** Choice Box ***/
+.choice-box {
+    -fx-background-color: white;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-border-color: -fx-speedment-darkgray;
+    -fx-font-family: -fx-font-text;
+    -fx-font-size: 1.1em;
+    -fx-font-weight: normal;
+}
+
+.choice-box:focused, .choice-box:hover {
+    -fx-border-color: -fx-speedment-green;
+}
+
+/*** Tooltips ***/
+.tooltip {
+    -fx-background-radius: 0px;
+    -fx-background-color: white;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-border-color: -fx-speedment-darkgray;
+    -fx-text-fill: black;
+    -fx-font-family: -fx-font-text;
+    -fx-font-size: 1.1em;
+    -fx-font-weight: normal;
+}
+
+/*** Toolbars ***/
+.tool-bar {
+    -fx-background-color: -fx-speedment-gray;
+}
+
+/*** Checkboxes ***/
+.check-box *.box {
+    -fx-background-color: white;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-border-color: -fx-speedment-darkgray;
+}
+
+.check-box *.box:hover,
+.check-box *.box:active {
+    -fx-border-color: -fx-speedment-green;
+}
+
+/*** Split Panes ***/
+.split-pane {
+    -fx-border-width: 0px;
+    -fx-background-color: transparent;
+}
+
+.split-pane-divider {
+    -fx-border-color: -fx-speedment-gray;
+    -fx-background-color: -fx-speedment-gray;
+}
+
+.split-pane-divider:hover,
+.split-pane-divider:active {
+    -fx-border-color: -fx-speedment-darkgray;
+    -fx-background-color: -fx-speedment-darkgray;
+}
+
+/*** Scroll Bars ***/
+.scroll-bar:horizontal,
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-border-width: 0px;
+}
+
+.increment-button,
+.decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: -fx-speedment-lightgray;
+    -fx-border-width: 0px;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-color: -fx-speedment-gray;
+    -fx-background-radius: 0px;
+    -fx-border-width: 0px;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: -fx-speedment-lightgray;
+    -fx-background-insets: 0, 0, 0;
+    -fx-background-radius: 0px;
+    -fx-border-width: 0px;
+}
+
+.scroll-bar:horizontal:hover .track,
+.scroll-bar:horizontal:pressed .track,
+.scroll-bar:vertical:hover .track,
+.scroll-bar:vertical:pressed .track{
+    -fx-background-color: -fx-speedment-gray;
+}
+
+.scroll-bar .thumb:hover,
+.scroll-bar .thumb:pressed {
+    -fx-background-color: -fx-speedment-darkgray;
+}
+
+.increment-button:hover,
+.decrement-button:hover {
+    -fx-background-color: -fx-speedment-darkgray;
+}
+
+/*** Menus ***/
+.menu-bar,
+.menu-bar .menu,
+.menu-bar .menu .menu-item {
+    -fx-background-color: -fx-speedment-gray;
+    -fx-text-fill: black;
+}
+
+.context-menu {
+    -fx-background-color: white;
+    -fx-background-radius: 0px;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-border-color: -fx-speedment-green;
+    -fx-text-fill: black;
+    -fx-padding: 0px;
+    -fx-font-family: -fx-font-text;
+    -fx-font-size: 1.1em;
+    -fx-font-weight: normal;
+}
+
+.menu-bar .menu:hover,
+.menu-bar .menu:active,
+.menu-bar .menu:focused,
+.menu-bar .menu:showing,
+.menu-bar .menu:hover > .label,
+.menu-bar .menu:active > .label,
+.menu-bar .menu:focused > .label,
+.menu-bar .menu:showing > .label,
+.menu-bar .menu .menu-item:hover,
+.menu-bar .menu .menu-item:active,
+.menu-bar .menu .menu-item:focused,
+.context-menu .menu-item:hover,
+.context-menu .menu-item:focused,
+.menu-bar .menu .menu-item:hover > .label,
+.menu-bar .menu .menu-item:active > .label,
+.menu-bar .menu .menu-item:focused > .label,
+.context-menu .menu-item:hover > .label,
+.context-menu .menu-item:focused > .label,
+.menu-bar .menu .menu-item:hover *,
+.menu-bar .menu .menu-item:active *,
+.menu-bar .menu .menu-item:focused *,
+.context-menu .menu-item:hover *,
+.context-menu .menu-item:focused * {
+    -fx-background-color: -fx-speedment-green;
+    -fx-fill: white;
+    -fx-text-fill: white;
+    -fx-focus-color:white;
+}
+
+.menu-bar .menu:hover:show-mnemonics > .label > .mnemonic-underline,
+.menu-bar .menu:active:show-mnemonics > .label > .mnemonic-underline,
+.menu-bar .menu:focused:show-mnemonics > .label > .mnemonic-underline,
+.menu-bar .menu:showing:show-mnemonics > .label > .mnemonic-underline,
+.menu-bar .menu:show-mnemonics .menu-item:hover > .label > .mnemonic-underline,
+.menu-bar .menu:show-mnemonics .menu-item:active > .label > .mnemonic-underline,
+.menu-bar .menu:show-mnemonics .menu-item:focused > .label > .mnemonic-underline,
+.menu-bar .menu:show-mnemonics .menu-item:showing > .label > .mnemonic-underline {
+    -fx-stroke: white;
+}
+
+/*** Separators ***/
+.menu-bar .separator {
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-background-color: -fx-speedment-green;
+}
+
+.menu-bar .separator .line {
+    -fx-border-width: 1px 0px 0px 0px;
+    -fx-border-style: solid;
+    -fx-border-color: -fx-speedment-green;
+}
+
+/*** Toolbar buttons ***/
+#toolbar {
+    -fx-padding: 0.5em 1em 0.5em 1em;
+    -fx-spacing: 1em;
+}
+
+#toolbar .button {
+    -fx-padding: 0.8em 1.2em 0.8em 1.2em;
+}
+
+#toolbar .button:show-mnemonics .mnemonic-underline {
+    -fx-stroke: white;
+}
+
+/*** Dialog Panels ***/
+.header-panel {
+    -fx-border-width: 0px;
+}
+
+.header-panel > .label,
+.header-panel > .label > .text {
+    -fx-text-fill: white;
+    -fx-font-family: -fx-font-text;
+    -fx-font-size: 2em;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+}
+
+.header-panel > .graphic-container .glyph-icon {
+    -fx-font-size: 2em;
+    -fx-text-fill: white;
+    -fx-fill: white;
+}
+
+.error .header-panel {
+    -fx-background-color: -fx-speedment-red;
+}
+
+.warning .header-panel {
+    -fx-background-color: -fx-speedment-orange;
+}
+
+.confirmation .header-panel {
+    -fx-background-color: -fx-speedment-orange;
+}
+
+.info .header-panel {
+    -fx-background-color: -fx-speedment-green;
+}
+
+.authentication .header-panel {
+    -fx-background-color: -fx-speedment-darkgray;
+}
+
+.progress .header-panel {
+    -fx-background-color: -fx-speedment-green;
+}
+
+/*** Output messages ***/
+.label.msg {
+    -fx-font-family: 'Consolas', 'Monospace';
+    -fx-font-size: 1.1em;
+    -fx-text-fill: black;
+}
+
+.label.msg.error {
+    -fx-background-color: -fx-speedment-lightred;
+}
+
+.label.msg.warning {
+    -fx-background-color: -fx-speedment-lightorange;
+}
+
+.label.msg.success {
+    -fx-background-color: -fx-speedment-lightgreen;
+}
+
+/*** Notifications ***/
+.notification {
+    -fx-border-width: 0px 0px 0px 8px;
+    -fx-background-color: #eee;
+    -fx-padding: 16;
+}
+
+.notification .glyph-icon {
+    -fx-font-size: 2.0em;
+    -fx-padding: 0em 0.8em 0em 0em;
+}
+
+.notification.info {
+    -fx-border-color: -fx-speedment-lightblue;
+}
+
+.notification.info .glyph-icon {
+    -fx-fill: -fx-speedment-lightblue;
+    -fx-text-fill: -fx-speedment-lightblue;
+}
+
+.notification.success {
+    -fx-border-color: -fx-speedment-green;
+}
+
+.notification.success .glyph-icon {
+    -fx-fill: -fx-speedment-green;
+    -fx-text-fill: -fx-speedment-green;
+}
+
+.notification.warning {
+    -fx-border-color: -fx-speedment-lightorange;
+}
+
+.notification.warning .glyph-icon {
+    -fx-fill: -fx-speedment-lightorange;
+    -fx-text-fill: -fx-speedment-lightorange;
+}
+
+.notification.error {
+    -fx-border-color: -fx-speedment-lightred;
+}
+
+.notification.error .glyph-icon {
+    -fx-fill: -fx-speedment-lightred;
+    -fx-text-fill: -fx-speedment-lightred;
+}
+
+.notification.confirmation {
+    -fx-border-color: -fx-speedment-lightorange;
+}
+
+.notification.confirmation .glyph-icon {
+    -fx-fill: -fx-speedment-lightorange;
+    -fx-text-fill: -fx-speedment-lightorange;
+}
+
+.notification.authentication {
+    -fx-border-color: -fx-speedment-lightgray;
+}
+
+.notification.authentication .glyph-icon {
+    -fx-fill: -fx-speedment-lightgray;
+    -fx-text-fill: -fx-speedment-lightgray;
+}
+
+/*** Properties layout ***/
+.properties-layout {
+    -fx-hgap: 10px;
+    -fx-vgap: 10px;
+    -fx-padding: 15px 15px 15px 15px;
+}
+
+/*** Properties layout : left ***/
+.property-label {
+    -fx-font-size: 1.2em;
+    -fx-alignment: top-left;
+    -fx-padding: 5px 0px 5px 0px;
+}
+
+/*** Properties layout : right ***/
+.property-editor {
+    -fx-spacing: 10px;
+    -fx-fill-width: true;
+    -fx-alignment: center-left;
+    -fx-wrap-text: true;
+}
+
+/*** Issues ***/
+#issues .button {
+    -fx-padding: 6px 8px 6px 8px;
+}
+
+/*** FontAwesome Icons ***/
+.glyph-icon {
+    -fx-font-family: 'FontAwesome';
+}
